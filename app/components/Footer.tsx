@@ -11,7 +11,7 @@ export default function Footer() {
       className="w-full pb-8 pt-4 text-center absolute bottom-0 left-0 right-0 z-30 pointer-events-auto bg-blue-50"
     >
       <div className="mb-4 text-gray-700 font-medium">
-        Built with <span className="text-red-500">❤️</span> by Mason Arditi
+        Built with <span className="text-red-500">❤️</span> by Jiahe Niu and Andrew Sasamori
       </div>
       <div className="flex justify-center space-x-8">
         <a 

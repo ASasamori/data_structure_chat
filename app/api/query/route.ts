@@ -7,8 +7,8 @@ export async function POST(request: Request) {
   console.log(`[API] Received question: ${question}`)
   console.log(`[API] Chat history length: ${chatHistory?.length || 0}`)
 
-  // We're already in the project root, so just grab query.py here
-  const scriptPath = path.join(process.cwd(), 'query.py')
+  // We're already in the project root, so just grab  py here
+  const scriptPath = path.join(process.cwd(), 'algorithms.py')
   console.log(`[API] Executing Python script at: ${scriptPath}`)
 
   return new Promise<NextResponse>((resolve) => {
@@ -17,13 +17,14 @@ export async function POST(request: Request) {
       env: process.env,
     })
 
+    // Event listeners to listen to stdout and stderror from the Python script
     let out = ''
     let err = ''
-
     py.stdout.on('data', (d) => (out += d.toString()))
     py.stderr.on('data', (d) => (err += d.toString()))
-
+    // Processes when the Python is closed
     py.on('close', (code) => {
+      // Error handling here:
       if (code !== 0) {
         console.error(`[API] Python error: ${err.trim()}`)
         resolve(NextResponse.json({ error: err.trim() }, { status: 500 }))

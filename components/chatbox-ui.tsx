@@ -14,6 +14,7 @@ export default function ChatInput({ onSend }: { onSend: (msg: string, personaliz
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
+  // Change this to be like show me which data structures to use
   const placeholders = [
     "What engineering classes have exactly a B average?",
     "Show me easy math classes with a high average",
@@ -54,12 +55,12 @@ export default function ChatInput({ onSend }: { onSend: (msg: string, personaliz
       return false
     }
     
-    // Check if query contains some context
-    const contextWords = ["class", "course", "classes", "courses", "average", "grade", "open seats", "available"]
-    if (!contextWords.some(word => trimmedQuery.toLowerCase().includes(word))) {
-      setErrorMessage("Please include keywords like 'class', 'course', 'grade', or 'seats'")
-      return false
-    }
+    // // Check if query contains some context
+    // const contextWords = ["class", "course", "classes", "courses", "average", "grade", "open seats", "available"]
+    // if (!contextWords.some(word => trimmedQuery.toLowerCase().includes(word))) {
+    //   setErrorMessage("Please include keywords like 'class', 'course', 'grade', or 'seats'")
+    //   return false
+    // }
     
     return true
   }
